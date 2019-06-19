@@ -1,4 +1,5 @@
-load 'modules.rb' 
+load 'name_company.rb' 
+load 'instance_counter.rb'
 
 class Train
   include NameCompany
@@ -6,6 +7,8 @@ class Train
 
   attr_reader :route, :speed, :wagon, :name_train, :station, :number
   attr_accessor :wagons
+  
+  @@trains = []
 
   def initialize(name_train)
     @name_train = name_train
@@ -13,7 +16,8 @@ class Train
     @wagons = []
     @name_company = "company"
     @number = rand(100)
-    register_instance(Train)
+    count
+    @@trains << self
   end
   
 
@@ -49,7 +53,7 @@ class Train
   end
 
   def Train.find(number)
-    ObjectSpace.each_object(self).each { |train|
+    @@trains.each { |train|
       return train if train.number == number
     }
   end

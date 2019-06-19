@@ -48,6 +48,8 @@ case choice
 	      
   when 10
     show_train
+when 12
+show_company
 	  
 end	 
 end

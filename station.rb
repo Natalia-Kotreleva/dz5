@@ -1,14 +1,17 @@
-load 'modules.rb' 
+load 'instance_counter.rb'
 
 class Station
   include InstanceCounter
+
+  @@stations = []
 
   attr_accessor :trains, :name_station
 
   def initialize(name_station)
     @name_station = name_station
     @trains = []
-    register_instance(Station)
+    count
+    @@stations << self
   end
 
   def remove_train(train)
@@ -26,7 +29,7 @@ class Station
   end
 
   def Station.all
-    print ObjectSpace.each_object(self).to_a
+    @@stations
   end
 
 end

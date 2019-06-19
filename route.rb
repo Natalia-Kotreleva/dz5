@@ -1,4 +1,4 @@
-load 'modules.rb' 
+load 'instance_counter.rb' 
 
 class Route
   include InstanceCounter
@@ -8,7 +8,7 @@ class Route
   def initialize(first_station, final_station, route_name)
     @stations = [first_station, final_station]
     @route_name = route_name
-    register_instance(Route)
+    count
   end
     
   def station_add(station)

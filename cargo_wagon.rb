@@ -1,4 +1,4 @@
-load 'modules.rb' 
+load 'name_company.rb' 
 
 class CargoWagon
   include NameCompany
