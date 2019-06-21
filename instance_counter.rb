@@ -1,26 +1,30 @@
 module InstanceCounter
-  @@instance_count = 0
   @@register = 0
-  
-  def count
-    @@instance_count += 1
-  end
  
   def self.included(base)
-    base.extend(Instances)
+    base.extend(ClassMethod)
+    base.include(InstancesMethod)
   end
   
-  module Instances
+  module ClassMethod
+    attr_writer :instances
 
-    def self.instances
-      @@instance_count
+    def instances
+      @instances ||= 0
     end
+
+    def count
+      @instances += 1
+    end
+
   end
 
-  protected
+  module InstancesMethod
 
-  def register_instance
-    @@register += 1
-  end 
+    def register_instance
+      @@register += 1
+    end 
+  end
+
 end
 

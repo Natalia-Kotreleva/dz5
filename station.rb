@@ -10,7 +10,6 @@ class Station
   def initialize(name_station)
     @name_station = name_station
     @trains = []
-    count
     @@stations << self
   end
 

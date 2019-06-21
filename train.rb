@@ -16,7 +16,6 @@ class Train
     @wagons = []
     @name_company = "company"
     @number = rand(100)
-    count
     @@trains << self
   end
   
