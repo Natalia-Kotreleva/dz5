@@ -14,7 +14,7 @@ module InstanceCounter
     end
 
     def count
-      @instances += 1
+      self.instances += 1
     end
 
   end
@@ -22,7 +22,7 @@ module InstanceCounter
   module InstancesMethod
 
     def register_instance
-      @@register += 1
+      self.class.count
     end 
   end
 

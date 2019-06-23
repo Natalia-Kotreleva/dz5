@@ -8,6 +8,7 @@ class Route
   def initialize(first_station, final_station, route_name)
     @stations = [first_station, final_station]
     @route_name = route_name
+    register_instance
   end
     
   def station_add(station)

@@ -16,6 +16,7 @@ class Train
     @wagons = []
     @name_company = "company"
     @number = rand(100)
+    register_instance
     @@trains << self
   end
   
