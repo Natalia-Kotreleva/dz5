@@ -17,6 +17,7 @@ puts "
   - Вывести список станций и список поездов на станции 10
   - Выход 11"
 choice = gets.to_i
+attempt = 0
 
 case choice  
   when 1

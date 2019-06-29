@@ -12,6 +12,7 @@ class Station
     @trains = []
     register_instance
     @@stations << self
+    validate!
   end
 
   def remove_train(train)
@@ -31,6 +32,18 @@ class Station
   def Station.all
     @@stations
   end
+  
+  def valid?
+    validate!
+    true
+    rescue false
+  end
 
+  protected
+  
+  def validate!
+    raise "Name is nil" if name_station.nil?
+    raise "Length < 3" if name_station.length < 3
+  end
 end
 

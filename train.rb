@@ -10,16 +10,18 @@ class Train
   
   @@trains = []
 
-  def initialize(name_train)
+  def initialize(name_train, number)
     @name_train = name_train
     @speed = 0
     @wagons = []
     @name_company = "company"
-    @number = rand(100)
+    @number = number
     register_instance
     @@trains << self
+    validate!
   end
   
+  TRAIN_NUMBER_FORMAT = /^[a-z0-9]{3}-*[a-z0-9]{2}$/i
 
   def speed_increase(value)
     @speed += value if value > 0 
@@ -58,5 +60,30 @@ class Train
     }
   end
 
+  def valid?
+    validate!
+    true
+    rescue false
+  end
+  
+  protected
+  
+  def validate!
+    begin
+      raise if name_train.length < 3
+    rescue 
+      puts "Length train name < 3, puts name"
+      name_train = gets.chomp
+    retry if name_train.length < 3
+    end
+
+    begin
+      raise if number !~ TRAIN_NUMBER_FORMAT
+    rescue 
+      puts "Invalid format train number, puts number"
+      number = gets.chomp
+    retry if number !~ TRAIN_NUMBER_FORMAT
+    end
+  end
 end
 

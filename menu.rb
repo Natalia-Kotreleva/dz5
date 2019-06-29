@@ -36,21 +36,27 @@ def set_route
 end
 
 def create_train
- puts "Выберите тип поезда: пассажирский (1), грузовой (2)"
+  puts "Выберите тип поезда: пассажирский (1), грузовой (2)"
   train_type = gets.to_i
+
     case train_type
       when 1
         puts "Введите имя поезда"
         passenger_train = gets.chomp
-        passenger_train = PassengerTrain.new("#{passenger_train}")
+        puts "Введите номер поезда"
+        passenger_train_number = gets.chomp
+        passenger_train = PassengerTrain.new("#{passenger_train}", "#{passenger_train_number}")
         @created_trains.push(passenger_train)
-        puts "Создано."
+        puts "Создан #{passenger_train}"
+
       when 2
         puts "Введите имя поезда"
         cargo_train = gets.chomp
-        cargo_train = CargoTrain.new("#{cargo_train}")
+        puts "Введите номер поезда"
+        cargo_train_number = gets.chomp
+        cargo_train = CargoTrain.new("#{cargo_train}", "#{cargo_train_number}")
         @created_trains.push(cargo_train)
-        puts "Создано."
+        puts "Создан #{cargo_train}"
     end
 end
 
